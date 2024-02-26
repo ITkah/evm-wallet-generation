@@ -1,0 +1,25 @@
+{
+  "name": "evm-generation-wallets",
+  "version": "1.0.4",
+  "description": "Generating wallets and writing them to a file",
+  "main": "generateWallets.js",
+  "scripts": {
+    "start": "node generateWallets.js"
+  },
+  "keywords": [
+    "ethereum", "wallet", "generator", "blockchain"
+  ],
+  "author": "ITkach",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "ethers": "^6.11.1",
+    "fs": "^0.0.1-security",
+    "readline": "^1.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITkah/evm-wallet-generation"
+  },
+  "homepage": "https://github.com/ITkah/evm-wallet-generation#readme"
+}
