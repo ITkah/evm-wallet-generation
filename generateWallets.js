@@ -22,24 +22,35 @@ function generateWallets() {
             wallets.push(ethers.Wallet.createRandom());
         }
 
-        let filename = 'wallets.txt';
-        let fileIndex = 1;
-        while (fs.existsSync(filename)) {
-            filename = `wallets_${fileIndex}.txt`;
-            fileIndex++;
-        }
+        rl.question('Do you want to output the wallets to console? (yes/no): ', (answer) => {
+            if (answer.toLowerCase() === 'yes') {
+                wallets.forEach((wallet, index) => {
+                    const address = wallet.address;
+                    const mnemonic = wallet.mnemonic.phrase;
+                    const publicKey = wallet.publicKey;
+                    console.log(`${index + 1}.\nAddress: ${address}\nMnemonic Phrase: ${mnemonic}\nPublic Key: ${publicKey}\n\n`);
+                });
+            }
 
-        fs.writeFileSync(filename, '');
-        wallets.forEach((wallet, index) => {
-            const address = wallet.address;
-            const mnemonic = wallet.mnemonic.phrase;
-            const publicKey = wallet.publicKey;
-            const data = `${index + 1}.\nAddress: ${address}\nMnemonic Phrase: ${mnemonic}\nPublic Key: ${publicKey}\n\n`;
-            fs.appendFileSync(filename, data);
+            let filename = 'wallets.txt';
+            let fileIndex = 1;
+            while (fs.existsSync(filename)) {
+                filename = `wallets_${fileIndex}.txt`;
+                fileIndex++;
+            }
+
+            fs.writeFileSync(filename, '');
+            wallets.forEach((wallet, index) => {
+                const address = wallet.address;
+                const mnemonic = wallet.mnemonic.phrase;
+                const publicKey = wallet.publicKey;
+                const data = `${index + 1}.\nAddress: ${address}\nMnemonic Phrase: ${mnemonic}\nPublic Key: ${publicKey}\n\n`;
+                fs.appendFileSync(filename, data);
+            });
+
+            console.log(`Wallets successfully generated and saved to ${filename}`);
+            rl.close();
         });
-
-        console.log(`Wallets successfully generated and saved to ${filename}`);
-        rl.close();
     });
 }
 
