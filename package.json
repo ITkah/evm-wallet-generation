@@ -1,6 +1,6 @@
 {
   "name": "evm-generation-wallets",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Generating wallets and writing them to a file",
   "main": "generateWallets.js",
   "scripts": {

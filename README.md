@@ -8,3 +8,5 @@ You can install this package using npm:
 
 ```bash
 npm install evm-generation-wallets
+
+node generateWallets.js
